@@ -30,12 +30,19 @@ class IntervalFragment : Fragment() {
 
     private fun handleChanges() {
         thumbsVBox.children.clear()
+
+        val tf:(Int)->(()->Unit)? = {idx: Int ->when{
+            intervalList.size >2 ->({intervalList.removeAt(idx)})
+            else -> null
+            }
+        }
+
         // Add the first value
         thumbsVBox.add(IntervalThumbFragment(
                 SimpleIntegerProperty(0),
                 intervalList[1],
                 intervalList[0],
-                null))
+                tf(0)))
 
         // Add all other values
         for (i in 1..intervalList.size - 2) {
@@ -43,7 +50,7 @@ class IntervalFragment : Fragment() {
                     intervalList[i - 1],
                     intervalList[i + 1],
                     intervalList[i])
-                    { intervalList.remove(intervalList[i]) })
+                    { intervalList.removeAt(i) })
 
         }
         // Add the last value
@@ -51,7 +58,7 @@ class IntervalFragment : Fragment() {
                 intervalList.reversed().drop(1).first(),
                 SimpleIntegerProperty(1000),
                 intervalList.last(),
-                null))
+                tf(intervalList.size - 1)))
 
     }
 }
