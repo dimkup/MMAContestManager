@@ -8,7 +8,7 @@ class MainView : View(messages["windowTitle"]) {
     override val root = tabpane {
         tabClosingPolicy = TabPane.TabClosingPolicy.UNAVAILABLE
         tab(messages["tabSportsmen"]) {
-            label("sport")
+            add(SportsmenTabView())
         }
         tab(messages["tabCategories"]) {
             add(CategoryTabView())
