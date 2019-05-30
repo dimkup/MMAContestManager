@@ -1,4 +1,4 @@
-package com.mma.contestmanager.view
+package com.mma.contestmanager.views
 
 import javafx.scene.control.TabPane
 import tornadofx.*

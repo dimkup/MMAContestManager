@@ -1,4 +1,4 @@
-package com.mma.contestmanager.view.intervals
+package com.mma.contestmanager.views.intervals
 
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.collections.ObservableList

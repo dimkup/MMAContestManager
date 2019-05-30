@@ -1,6 +1,6 @@
-package com.mma.contestmanager.view
+package com.mma.contestmanager.views
 
-import com.mma.contestmanager.view.intervals.IntervalFragment
+import com.mma.contestmanager.views.intervals.IntervalFragment
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.scene.layout.HBox
 import tornadofx.*

@@ -1,6 +1,6 @@
 package com.mma.contestmanager.app
 
-import com.mma.contestmanager.view.MainView
+import com.mma.contestmanager.views.MainView
 import javafx.stage.Stage
 import tornadofx.App
 
