@@ -44,27 +44,27 @@ class SportsmenTabView : View() {
                                 filterInput { it.controlNewText.isInt() }
                             }.required()
                         }
-                        hbox {
-                            button("Reset") {
-                                enableWhen(model.dirty)
-                                action {
-                                    model.rollback()
+                        }
+                    hbox {
+                        button("Reset") {
+                            enableWhen(model.dirty)
+                            action {
+                                model.rollback()
+                            }
+                        }
+                        button("Save") {
+                            enableWhen(model.dirty)
+                            action {
+                                model.commit()
+                                val m = model.item
+                                if (m.idProperty.get() == 0) {
+                                    m.idProperty.set(counter++)
+                                    sportsmen.add(m)
                                 }
                             }
-                            button("Save") {
-                                enableWhen(model.dirty)
-                                action {
-                                    model.commit()
-                                    val m = model.item
-                                    if (m.idProperty.get() == 0) {
-                                        m.idProperty.set(counter++)
-                                        sportsmen.add(m)
-                                    }
-                                }
-                            }
-                            button("New") {
-                                action { model.item = Sportsman() }
-                            }
+                        }
+                        button("New") {
+                            action { model.item = Sportsman() }
                         }
                     }
                 }
