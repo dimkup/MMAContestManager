@@ -1,6 +1,8 @@
 package com.mma.contestmanager.views
 
 import com.mma.contestmanager.models.Sportsman
+import javafx.beans.binding.When
+import javafx.scene.control.SelectionMode
 import javafx.scene.layout.BorderPane
 import tornadofx.*
 
@@ -10,23 +12,28 @@ class SportsmenTabView : View() {
     val model = SportsmanModel()
     var counter = 5
 
+    private val sportsmenTable = tableview(sportsmen) {
+                column("ID",Sportsman::idProperty)
+                column("First name", Sportsman::firstNameProperty)
+                column("Last name", Sportsman::lastNameProperty)
+                column("Age", Sportsman::ageProperty)
+                column("Weight", Sportsman::weightProperty)
+                bindSelected(model)
+                selectionModel.selectionMode = SelectionMode.SINGLE
+            }
+
     init {
         with(root) {
             center {
-                tableview(sportsmen) {
-                    column("ID",Sportsman::idProperty)
-                    column("First name", Sportsman::firstNameProperty)
-                    column("Last name", Sportsman::lastNameProperty)
-                    column("Age", Sportsman::ageProperty)
-                    column("Weight", Sportsman::weightProperty)
-                    bindSelected(model)
-                }
+                add(sportsmenTable)
             }
 
             right {
                 form {
+                    //enableWhen(model.empty.not())
                     fieldset("Edit sportsman") {
-                        enableWhen(!model.empty)
+                        //enableWhen(model.empty.not())
+                        hiddenWhen { model.empty }
                         field("First name") {
                             textfield(model.firstName).required(message="First name is required")
                         }
@@ -44,7 +51,8 @@ class SportsmenTabView : View() {
                                 filterInput { it.controlNewText.isInt() }
                             }.required()
                         }
-                        }
+
+                    }
                     hbox {
                         button("Reset") {
                             enableWhen(model.dirty)
@@ -60,7 +68,15 @@ class SportsmenTabView : View() {
                                 if (m.idProperty.get() == 0) {
                                     m.idProperty.set(counter++)
                                     sportsmen.add(m)
+                                    //sportsmenTable.selectionModel.select(m)
+                                    model.item = null
                                 }
+                            }
+                        }
+                        button("Del") {
+                            enableWhen { model.empty.not() }
+                            action {
+                                sportsmen.remove(model.item)
                             }
                         }
                         button("New") {
