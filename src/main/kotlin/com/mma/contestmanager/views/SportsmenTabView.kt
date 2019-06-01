@@ -2,6 +2,7 @@ package com.mma.contestmanager.views
 
 import com.mma.contestmanager.models.Sportsman
 import javafx.beans.binding.When
+import javafx.beans.property.SimpleBooleanProperty
 import javafx.scene.control.SelectionMode
 import javafx.scene.layout.BorderPane
 import tornadofx.*
@@ -9,7 +10,8 @@ import tornadofx.*
 class SportsmenTabView : View() {
     override val root = BorderPane()
     val sportsmen = mutableListOf(Sportsman(1,"John", "Doe",20,60), Sportsman(2,"Jay", "McMaster",30,80)).observable()
-    val model = SportsmanModel()
+    private val addingNewProperty = SimpleBooleanProperty(false)
+    private val model = SportsmanModel()
     var counter = 5
 
     private val sportsmenTable = tableview(sportsmen) {
@@ -23,6 +25,9 @@ class SportsmenTabView : View() {
             }
 
     init {
+        model.itemProperty.addListener { _, _, newValue ->
+            newValue?.let { addingNewProperty.set(newValue.idProperty.get() == 0) }
+        }
         with(root) {
             center {
                 add(sportsmenTable)
@@ -31,7 +36,9 @@ class SportsmenTabView : View() {
             right {
                 vbox {
                     button("New") {
-                        action { model.item = Sportsman() }
+                        action {
+                            model.item = Sportsman()
+                        }
                         useMaxWidth = true
                         shortcut("Ctrl+N")
                     }
@@ -75,7 +82,7 @@ class SportsmenTabView : View() {
                                     }
                                 }
                                 button("Del") {
-                                    enableWhen { model.empty.not() }
+                                    enableWhen { model.empty.not().and(addingNewProperty.not()) }
                                     action {
                                         sportsmen.remove(model.item)
                                     }
