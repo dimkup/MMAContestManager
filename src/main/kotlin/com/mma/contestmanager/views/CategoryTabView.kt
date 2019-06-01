@@ -23,6 +23,7 @@ class CategoryTabView : View("My View") {
             add(IntervalFragment::class,mapOf(
                     IntervalFragment::intervalList to intList2,
                     IntervalFragment::headText to "Age"))
+            spacing = 20.0
         }
     }
 }

@@ -29,59 +29,61 @@ class SportsmenTabView : View() {
             }
 
             right {
-                form {
-                    //enableWhen(model.empty.not())
-                    fieldset("Edit sportsman") {
-                        //enableWhen(model.empty.not())
-                        hiddenWhen { model.empty }
-                        field("First name") {
-                            textfield(model.firstName).required(message="First name is required")
-                        }
-                        field("Last name") {
-                            textfield(model.lastName).required()
-                        }
-
-                        field("Age") {
-                            textfield(model.age) {
-                                filterInput { it.controlNewText.isInt() }
-                            }.required()
-                        }
-                        field("Weight") {
-                            textfield(model.weight) {
-                                filterInput { it.controlNewText.isInt() }
-                            }.required()
-                        }
-
+                vbox {
+                    button("New") {
+                        action { model.item = Sportsman() }
+                        useMaxWidth = true
+                        shortcut("Ctrl+N")
                     }
-                    hbox {
-                        button("Reset") {
-                            enableWhen(model.dirty)
-                            action {
-                                model.rollback()
+                    form {
+                        hiddenWhen { model.empty }
+                        fieldset("Edit sportsman") {
+                            field("First name") {
+                                textfield(model.firstName).required(message = "First name is required")
                             }
-                        }
-                        button("Save") {
-                            enableWhen(model.dirty)
-                            action {
-                                model.commit()
-                                val m = model.item
-                                if (m.idProperty.get() == 0) {
-                                    m.idProperty.set(counter++)
-                                    sportsmen.add(m)
-                                    //sportsmenTable.selectionModel.select(m)
-                                    model.item = null
+                            field("Last name") {
+                                textfield(model.lastName).required()
+                            }
+
+                            field("Age") {
+                                textfield(model.age) {
+                                    filterInput { it.controlNewText.isInt() }
+                                }.required()
+                            }
+                            field("Weight") {
+                                textfield(model.weight) {
+                                    filterInput { it.controlNewText.isInt() }
+                                }.required()
+                            }
+                            hbox {
+                                button("Reset") {
+                                    enableWhen(model.dirty)
+                                    action {
+                                        model.rollback()
+                                    }
                                 }
+                                button("Save") {
+                                    enableWhen(model.dirty.and(model.valid))
+                                    action {
+                                        model.commit()
+                                        val m = model.item
+                                        if (m.idProperty.get() == 0) {
+                                            m.idProperty.set(counter++)
+                                            sportsmen.add(m)
+                                            model.item = null
+                                        }
+                                    }
+                                }
+                                button("Del") {
+                                    enableWhen { model.empty.not() }
+                                    action {
+                                        sportsmen.remove(model.item)
+                                    }
+                                }
+
                             }
                         }
-                        button("Del") {
-                            enableWhen { model.empty.not() }
-                            action {
-                                sportsmen.remove(model.item)
-                            }
-                        }
-                        button("New") {
-                            action { model.item = Sportsman() }
-                        }
+
                     }
                 }
             }
