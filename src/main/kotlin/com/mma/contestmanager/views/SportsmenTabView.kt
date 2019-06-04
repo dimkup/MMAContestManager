@@ -44,7 +44,10 @@ class SportsmenTabView : View() {
                     }
                     form {
                         hiddenWhen { model.empty }
-                        fieldset("Edit sportsman") {
+                        fieldset(messages["sportsmanEditFiledsetLabel"]) {
+                            addingNewProperty.addListener { _, _, newVal -> this.text =
+                                    if (newVal) messages["sportsmanNewFiledsetLabel"]
+                                    else messages["sportsmanEditFiledsetLabel"]}
                             field("First name") {
                                 textfield(model.firstName).required(message = "First name is required")
                             }
