@@ -45,27 +45,34 @@ class IntervalFragment : Fragment() {
         }
 
         // Add the first value
-        thumbsVBox.add(IntervalThumbFragment(
+        thumbsVBox.add(
+            IntervalThumbFragment(
                 SimpleIntegerProperty(0),
                 intervalList[1],
                 intervalList[0],
-                tf(0)))
+                tf(0)
+            )
+        )
 
         // Add all other values
         for (i in 1..intervalList.size - 2) {
             thumbsVBox.add(IntervalThumbFragment(
-                    intervalList[i - 1],
-                    intervalList[i + 1],
-                    intervalList[i])
+                intervalList[i - 1],
+                intervalList[i + 1],
+                intervalList[i]
+            )
             { intervalList.removeAt(i) })
 
         }
         // Add the last value
-        thumbsVBox.add(IntervalThumbFragment(
+        thumbsVBox.add(
+            IntervalThumbFragment(
                 intervalList.reversed().drop(1).first(),
                 SimpleIntegerProperty(1000),
                 intervalList.last(),
-                tf(intervalList.size - 1)))
+                tf(intervalList.size - 1)
+            )
+        )
 
     }
 }

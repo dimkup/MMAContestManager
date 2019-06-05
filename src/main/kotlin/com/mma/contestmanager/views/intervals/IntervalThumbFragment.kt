@@ -5,10 +5,12 @@ import javafx.geometry.Pos
 import javafx.scene.text.TextAlignment
 import tornadofx.*
 
-class IntervalThumbFragment(private val minValProperty: SimpleIntegerProperty,
-                            private val maxValProperty: SimpleIntegerProperty,
-                            private val valueProperty: SimpleIntegerProperty,
-                            private val deleteAction: (() -> Unit)?) : Fragment() {
+class IntervalThumbFragment(
+    private val minValProperty: SimpleIntegerProperty,
+    private val maxValProperty: SimpleIntegerProperty,
+    private val valueProperty: SimpleIntegerProperty,
+    private val deleteAction: (() -> Unit)?
+) : Fragment() {
 
     var value by valueProperty
 
