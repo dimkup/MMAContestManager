@@ -21,8 +21,8 @@ class CategoryTabView : View("My View") {
 
     init {
         with(root) {
-            add(IntervalFragment(intList1,"Weight", MIN_WHEIGT, MAX_WHEIGT, MAX_THUMBS))
-            add(IntervalFragment(intList2,"Age", MIN_AGE, MAX_AGE, MAX_THUMBS))
+            add(IntervalFragment(intList1,messages["weightIntervalsHead"], MIN_WHEIGT, MAX_WHEIGT, MAX_THUMBS))
+            add(IntervalFragment(intList2,messages["ageIntervalsHead"], MIN_AGE, MAX_AGE, MAX_THUMBS))
             spacing = 20.0
         }
     }
