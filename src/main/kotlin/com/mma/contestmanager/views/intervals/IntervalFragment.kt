@@ -6,9 +6,14 @@ import javafx.geometry.Pos
 import javafx.scene.layout.VBox
 import tornadofx.*
 
-class IntervalFragment : Fragment() {
-    val intervalList: ObservableList<SimpleIntegerProperty> by param()
-    val headText: String? by param()
+class IntervalFragment(
+        private val intervalList: ObservableList<SimpleIntegerProperty>,
+        private val headText: String?,
+        private val minVal: Int,
+        private val maxVal: Int,
+        private val maxThumbs: Int
+) : Fragment() {
+
     private val thumbsVBox = VBox()
 
     init {
@@ -22,6 +27,7 @@ class IntervalFragment : Fragment() {
         }
         add(thumbsVBox)
         button("Add") {
+            enableWhen(intervalList.sizeProperty.lessThan(maxThumbs))
             action {
                 val maxVal = intervalList.last().get() + 10
                 intervalList.add(SimpleIntegerProperty(maxVal))
@@ -47,7 +53,7 @@ class IntervalFragment : Fragment() {
         // Add the first value
         thumbsVBox.add(
             IntervalThumbFragment(
-                SimpleIntegerProperty(0),
+                SimpleIntegerProperty(minVal),
                 intervalList[1],
                 intervalList[0],
                 tf(0)
@@ -68,7 +74,7 @@ class IntervalFragment : Fragment() {
         thumbsVBox.add(
             IntervalThumbFragment(
                 intervalList.reversed().drop(1).first(),
-                SimpleIntegerProperty(1000),
+                SimpleIntegerProperty(maxVal),
                 intervalList.last(),
                 tf(intervalList.size - 1)
             )
