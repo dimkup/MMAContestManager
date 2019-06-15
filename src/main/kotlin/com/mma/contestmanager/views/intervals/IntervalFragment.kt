@@ -7,11 +7,11 @@ import javafx.scene.layout.VBox
 import tornadofx.*
 
 class IntervalFragment(
-        private val intervalList: ObservableList<SimpleIntegerProperty>,
-        private val headText: String?,
-        private val minVal: Int,
-        private val maxVal: Int,
-        private val maxThumbs: Int
+    private val intervalList: ObservableList<SimpleIntegerProperty>,
+    private val headText: String?,
+    private val minVal: Int,
+    private val maxVal: Int,
+    private val maxThumbs: Int
 ) : Fragment() {
 
     private val thumbsVBox = VBox()
