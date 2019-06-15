@@ -26,7 +26,7 @@ class IntervalFragment(
             }
         }
         add(thumbsVBox)
-        button("Add") {
+        button(messages["add"]) {
             enableWhen(intervalList.sizeProperty.lessThan(maxThumbs))
             action {
                 val maxVal = intervalList.last().get() + 10

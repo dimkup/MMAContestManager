@@ -17,10 +17,10 @@ class SportsmenTabView : View() {
 
     private val sportsmenTable = tableview(sportsmen) {
         column("ID", Sportsman::idProperty)
-        column("First name", Sportsman::firstNameProperty)
-        column("Last name", Sportsman::lastNameProperty)
-        column("Age", Sportsman::ageProperty)
-        column("Weight", Sportsman::weightProperty)
+        column(messages["firstName"], Sportsman::firstNameProperty)
+        column(messages["lastName"], Sportsman::lastNameProperty)
+        column(messages["age"], Sportsman::ageProperty)
+        column(messages["weight"], Sportsman::weightProperty)
         bindSelected(model)
         selectionModel.selectionMode = SelectionMode.SINGLE
     }
@@ -36,7 +36,7 @@ class SportsmenTabView : View() {
 
             right {
                 vbox {
-                    button("New") {
+                    button(messages["add"]) {
                         action {
                             model.item = Sportsman()
                         }
@@ -51,19 +51,19 @@ class SportsmenTabView : View() {
                                     if (newVal) messages["sportsmanNewFiledsetLabel"]
                                     else messages["sportsmanEditFiledsetLabel"]
                             }
-                            field("First name") {
+                            field(messages["firstName"]) {
                                 textfield(model.firstName).required(message = "First name is required")
                             }
-                            field("Last name") {
+                            field(messages["lastName"]) {
                                 textfield(model.lastName).required()
                             }
 
-                            field("Age") {
+                            field(messages["age"]) {
                                 textfield(model.age) {
                                     filterInput { it.controlNewText.isInt() }
                                 }.required()
                             }
-                            field("Weight") {
+                            field(messages["weight"]) {
                                 textfield(model.weight) {
                                     filterInput { it.controlNewText.isInt() }
                                 }.required()
