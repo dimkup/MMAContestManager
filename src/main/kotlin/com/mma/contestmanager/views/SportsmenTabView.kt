@@ -1,5 +1,9 @@
 package com.mma.contestmanager.views
 
+import com.mma.contestmanager.app.MAX_AGE
+import com.mma.contestmanager.app.MAX_WHEIGT
+import com.mma.contestmanager.app.MIN_AGE
+import com.mma.contestmanager.app.MIN_WHEIGT
 import com.mma.contestmanager.models.Sportsman
 import javafx.beans.binding.When
 import javafx.beans.property.SimpleBooleanProperty
@@ -61,13 +65,29 @@ class SportsmenTabView : View() {
                             field(messages["age"]) {
                                 textfield(model.age) {
                                     filterInput { it.controlNewText.isInt() }
-                                }.required()
+                                }.validator {
+                                    when {
+                                        it.isNullOrBlank() -> error("Age is required")
+                                        it.toInt() < MIN_AGE -> error("Age is too small")
+                                        it.toInt() > MAX_AGE -> error("Age is too big")
+                                        else -> null
+                                    }
+                                }
                             }
+
                             field(messages["weight"]) {
                                 textfield(model.weight) {
                                     filterInput { it.controlNewText.isInt() }
-                                }.required()
+                                }.validator {
+                                    when {
+                                        it.isNullOrBlank() -> error("Weight is required")
+                                        it.toInt() < MIN_WHEIGT -> error("Weight is too small")
+                                        it.toInt() > MAX_WHEIGT -> error("Weight is too big")
+                                        else -> null
+                                    }
+                                }
                             }
+
                             hbox {
                                 button("Reset") {
                                     enableWhen(model.dirty)
@@ -93,10 +113,8 @@ class SportsmenTabView : View() {
                                         sportsmen.remove(model.item)
                                     }
                                 }
-
                             }
                         }
-
                     }
                 }
             }
