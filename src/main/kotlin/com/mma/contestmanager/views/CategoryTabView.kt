@@ -9,7 +9,7 @@ import tornadofx.*
 class CategoryTabView : View() {
     override val root = HBox()
     private val intList1 = mutableListOf(
-        SimpleIntegerProperty(MIN_WHEIGT + 1),
+        SimpleIntegerProperty(MIN_WEIGHT + 1),
         SimpleIntegerProperty(15),
         SimpleIntegerProperty(20)
     ).observable()
@@ -21,7 +21,7 @@ class CategoryTabView : View() {
 
     init {
         with(root) {
-            add(IntervalFragment(intList1,messages["weight"], MIN_WHEIGT, MAX_WHEIGT, MAX_THUMBS))
+            add(IntervalFragment(intList1,messages["weight"], MIN_WEIGHT, MAX_WEIGHT, MAX_THUMBS))
             add(IntervalFragment(intList2,messages["age"], MIN_AGE, MAX_AGE, MAX_THUMBS))
             spacing = 20.0
         }

@@ -1,11 +1,10 @@
 package com.mma.contestmanager.views
 
 import com.mma.contestmanager.app.MAX_AGE
-import com.mma.contestmanager.app.MAX_WHEIGT
+import com.mma.contestmanager.app.MAX_WEIGHT
 import com.mma.contestmanager.app.MIN_AGE
-import com.mma.contestmanager.app.MIN_WHEIGT
+import com.mma.contestmanager.app.MIN_WEIGHT
 import com.mma.contestmanager.models.Sportsman
-import javafx.beans.binding.When
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.scene.control.SelectionMode
 import javafx.scene.layout.BorderPane
@@ -81,8 +80,8 @@ class SportsmenTabView : View() {
                                 }.validator {
                                     when {
                                         it.isNullOrBlank() -> error("Weight is required")
-                                        it.toInt() < MIN_WHEIGT -> error("Weight is too small")
-                                        it.toInt() > MAX_WHEIGT -> error("Weight is too big")
+                                        it.toInt() < MIN_WEIGHT -> error("Weight is too small")
+                                        it.toInt() > MAX_WEIGHT -> error("Weight is too big")
                                         else -> null
                                     }
                                 }
