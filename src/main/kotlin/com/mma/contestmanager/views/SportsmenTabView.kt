@@ -4,6 +4,7 @@ import com.mma.contestmanager.app.MAX_AGE
 import com.mma.contestmanager.app.MAX_WEIGHT
 import com.mma.contestmanager.app.MIN_AGE
 import com.mma.contestmanager.app.MIN_WEIGHT
+import com.mma.contestmanager.controllers.RegistrationController
 import com.mma.contestmanager.models.Sportsman
 import javafx.beans.property.SimpleBooleanProperty
 import javafx.scene.control.SelectionMode
@@ -12,8 +13,8 @@ import tornadofx.*
 
 class SportsmenTabView : View() {
     override val root = BorderPane()
-    val sportsmen =
-        mutableListOf(Sportsman(1, "John", "Doe", 20, 60), Sportsman(2, "Jay", "McMaster", 30, 80)).observable()
+    private val controller: RegistrationController by inject()
+    private val sportsmen = controller.sportsmen
     private val addingNewProperty = SimpleBooleanProperty(false)
     private val model = SportsmanModel()
     var counter = 5
