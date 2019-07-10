@@ -29,7 +29,7 @@ class IntervalFragment(
         button(messages["add"]) {
             enableWhen(intervalList.sizeProperty.lessThan(maxThumbs))
             action {
-                val maxVal = intervalList.last().get() + 10
+                val maxVal = intervalList.last().get() + 5
                 intervalList.add(SimpleIntegerProperty(maxVal))
             }
             useMaxWidth = true
