@@ -17,7 +17,7 @@ class SportsmenTabView : View() {
     private val sportsmen = controller.sportsmen
     private val addingNewProperty = SimpleBooleanProperty(false)
     private val model = SportsmanModel()
-    var counter = 5
+    var counter = 1
 
     private val sportsmenTable = tableview(sportsmen) {
         column("ID", Sportsman::idProperty)
@@ -104,6 +104,7 @@ class SportsmenTabView : View() {
                                             m.idProperty.set(counter++)
                                             sportsmen.add(m)
                                             model.item = null
+                                            assert(counter < 10000)
                                         }
                                     }
                                 }

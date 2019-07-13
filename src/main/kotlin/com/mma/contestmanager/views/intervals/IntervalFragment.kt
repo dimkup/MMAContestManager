@@ -43,22 +43,17 @@ class IntervalFragment(
     private fun handleChanges() {
         thumbsVBox.children.clear()
 
-        val tf: (Int) -> (() -> Unit)? = { idx: Int ->
-            when {
-                intervalList.size > 2 -> ({ intervalList.removeAt(idx) })
-                else -> null
-            }
-        }
 
         // Add the first value
         thumbsVBox.add(
             IntervalThumbFragment(
-                SimpleIntegerProperty(minVal),
-                intervalList[1],
                 intervalList[0],
-                tf(0)
+                intervalList[0],
+                intervalList[0],
+                null
             )
         )
+
 
         // Add all other values
         for (i in 1..intervalList.size - 2) {
@@ -71,14 +66,14 @@ class IntervalFragment(
 
         }
         // Add the last value
-        thumbsVBox.add(
-            IntervalThumbFragment(
-                intervalList.reversed().drop(1).first(),
-                SimpleIntegerProperty(maxVal),
-                intervalList.last(),
-                tf(intervalList.size - 1)
+        if (intervalList.size > 1)
+            thumbsVBox.add(
+                IntervalThumbFragment(
+                    intervalList.reversed().drop(1).first(),
+                    SimpleIntegerProperty(maxVal),
+                    intervalList.last()
+                ) { intervalList.removeAt(intervalList.size - 1) }
             )
-        )
 
     }
 }

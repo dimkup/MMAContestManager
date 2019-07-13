@@ -9,4 +9,6 @@ class Sportsman(id: Int = 0, firstName: String = "", lastName: String = "", age:
     val ageProperty = SimpleIntegerProperty(age)
     val weightProperty = SimpleIntegerProperty(weight)
     val idProperty = SimpleIntegerProperty(id)
+    var category: Category? = null
+    val ageIdProperty = ageProperty.multiply(10000).add(idProperty)!!
 }
