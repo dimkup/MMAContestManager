@@ -13,6 +13,9 @@ class MainView : View(messages["windowTitle"]) {
         tab(messages["tabCategories"]) {
             add(CategoryTabView())
         }
+        tab(messages["tabPrint"]) {
+            add(PrintTabView())
+        }
     }
 
 }
