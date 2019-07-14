@@ -29,7 +29,7 @@ class IntervalThumbFragment(
             action { value++ }
         }
         deleteAction?.let {
-            button("Del") {
+            button(messages["del"]) {
                 action { deleteAction.invoke() }
             }
         }

@@ -18,6 +18,7 @@ class RegistrationController : Controller() {
     val sportsmen: ObservableList<Sportsman> = ArrayList<Sportsman>().observable()
     val categoriesMap: NavigableMap<Int, NavigableMap<Int, Category>> = TreeMap<Int, NavigableMap<Int, Category>>()
     val navSportsmenMap: NavigableMap<Int, Sportsman> = TreeMap<Int, Sportsman>()
+    val categoriesUpdatedProperty = SimpleIntegerProperty(0)
 
     val ageIntervals = mutableListOf(
         SimpleIntegerProperty(MIN_AGE)
@@ -138,6 +139,7 @@ class RegistrationController : Controller() {
             currentMaxAge = age
         }
 
+        categoriesUpdatedProperty.set(categoriesUpdatedProperty.intValue() + 1)
         println("-----------------")
         categoriesMap.forEach { it.value.forEach { println(it.value) } }
     }

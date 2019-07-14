@@ -13,7 +13,7 @@ class Category(
     val minWeight: Int,
     private val globalSportsmenMap: NavigableMap<Int, Sportsman>
 ) {
-    private val sportsmen: ObservableList<Sportsman> = ArrayList<Sportsman>().observable()
+    val sportsmen: ObservableList<Sportsman> = ArrayList<Sportsman>().observable()
     private var maxAge = 0
     private var maxWeight = 0
 

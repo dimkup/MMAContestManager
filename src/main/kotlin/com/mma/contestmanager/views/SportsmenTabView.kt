@@ -89,13 +89,13 @@ class SportsmenTabView : View() {
                             }
 
                             hbox {
-                                button("Reset") {
+                                button(messages["reset"]) {
                                     enableWhen(model.dirty)
                                     action {
                                         model.rollback()
                                     }
                                 }
-                                button("Save") {
+                                button(messages["save"]) {
                                     enableWhen(model.dirty.and(model.valid))
                                     action {
                                         model.commit()
@@ -108,7 +108,7 @@ class SportsmenTabView : View() {
                                         }
                                     }
                                 }
-                                button("Del") {
+                                button(messages["del"]) {
                                     enableWhen { model.empty.not().and(addingNewProperty.not()) }
                                     action {
                                         sportsmen.remove(model.item)
