@@ -6,4 +6,6 @@ const val MAX_WEIGHT = 200
 const val MIN_WEIGHT = 10
 const val MAX_THUMBS = 10
 
+const val AGE_SHIFT = 10000
+
 

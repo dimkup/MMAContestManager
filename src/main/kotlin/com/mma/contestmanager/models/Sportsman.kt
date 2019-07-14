@@ -1,5 +1,6 @@
 package com.mma.contestmanager.models
 
+import com.mma.contestmanager.app.AGE_SHIFT
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
 
@@ -14,6 +15,6 @@ class Sportsman(id: Int = 0, firstName: String = "", lastName: String = "", age:
             value?.let { categoryNameProperty.set(value.name) }
             field = value
         }
-    val ageIdProperty = ageProperty.multiply(10000).add(idProperty)!!
+    val ageIdProperty = ageProperty.multiply(AGE_SHIFT).add(idProperty)!!
     val categoryNameProperty = SimpleStringProperty(this, "categoryName", "NA")
 }

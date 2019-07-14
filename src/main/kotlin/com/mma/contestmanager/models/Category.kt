@@ -1,8 +1,8 @@
 package com.mma.contestmanager.models
 
+import com.mma.contestmanager.app.AGE_SHIFT
 import com.mma.contestmanager.app.MAX_AGE
 import com.mma.contestmanager.app.MAX_WEIGHT
-import javafx.beans.property.SimpleIntegerProperty
 import javafx.collections.ObservableList
 import tornadofx.*
 import java.util.*
@@ -45,9 +45,9 @@ class Category(
 
     private fun forceRefresh() {
         val localSportsmanMap = globalSportsmenMap.subMap(
-            minAge * 10000,
+            minAge * AGE_SHIFT,
             true,
-            maxAge * 10000,
+            maxAge * AGE_SHIFT,
             false
         )
         sportsmen.clear()

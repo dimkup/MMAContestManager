@@ -16,8 +16,8 @@ import kotlin.collections.HashSet
 
 class RegistrationController : Controller() {
     val sportsmen: ObservableList<Sportsman> = ArrayList<Sportsman>().observable()
-    val categoriesMap: NavigableMap<Int, NavigableMap<Int, Category>> = TreeMap<Int, NavigableMap<Int, Category>>()
-    val navSportsmenMap: NavigableMap<Int, Sportsman> = TreeMap<Int, Sportsman>()
+    val categoriesMap: NavigableMap<Int, NavigableMap<Int, Category>> = TreeMap()
+    val navSportsmenMap: NavigableMap<Int, Sportsman> = TreeMap()
     val categoriesUpdatedProperty = SimpleIntegerProperty(0)
 
     val ageIntervals = mutableListOf(
