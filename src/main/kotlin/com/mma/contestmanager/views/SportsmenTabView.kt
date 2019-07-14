@@ -21,6 +21,7 @@ class SportsmenTabView : View() {
 
     private val sportsmenTable = tableview(sportsmen) {
         column("ID", Sportsman::idProperty)
+        column(messages["category"], Sportsman::categoryNameProperty)
         column(messages["firstName"], Sportsman::firstNameProperty)
         column(messages["lastName"], Sportsman::lastNameProperty)
         column(messages["age"], Sportsman::ageProperty)

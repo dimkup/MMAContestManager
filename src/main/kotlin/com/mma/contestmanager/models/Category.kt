@@ -16,6 +16,10 @@ class Category(
     val sportsmen: ObservableList<Sportsman> = ArrayList<Sportsman>().observable()
     private var maxAge = 0
     private var maxWeight = 0
+    val name: String
+        get() {
+            return "$minAge/$minWeight"
+        }
 
 
     init {

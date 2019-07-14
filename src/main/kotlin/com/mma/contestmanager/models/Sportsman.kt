@@ -10,5 +10,10 @@ class Sportsman(id: Int = 0, firstName: String = "", lastName: String = "", age:
     val weightProperty = SimpleIntegerProperty(weight)
     val idProperty = SimpleIntegerProperty(id)
     var category: Category? = null
+        set(value) {
+            value?.let { categoryNameProperty.set(value.name) }
+            field = value
+        }
     val ageIdProperty = ageProperty.multiply(10000).add(idProperty)!!
+    val categoryNameProperty = SimpleStringProperty(this, "categoryName", "NA")
 }
