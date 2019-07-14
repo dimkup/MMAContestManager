@@ -1,9 +1,6 @@
 package com.mma.contestmanager.views
 
-import com.mma.contestmanager.app.MAX_AGE
-import com.mma.contestmanager.app.MAX_WEIGHT
-import com.mma.contestmanager.app.MIN_AGE
-import com.mma.contestmanager.app.MIN_WEIGHT
+import com.mma.contestmanager.app.*
 import com.mma.contestmanager.controllers.RegistrationController
 import com.mma.contestmanager.models.Sportsman
 import javafx.beans.property.SimpleBooleanProperty
@@ -105,7 +102,7 @@ class SportsmenTabView : View() {
                                             m.idProperty.set(counter++)
                                             sportsmen.add(m)
                                             model.item = null
-                                            assert(counter < 10000)
+                                            assert(counter < AGE_SHIFT)
                                         }
                                     }
                                 }
