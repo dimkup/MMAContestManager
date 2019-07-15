@@ -22,7 +22,7 @@ apply plugin: "no.tornado.fxlauncher"
 
 fxlauncher {
     applicationVendor "Dmitrii Potoskuev"
-    applicationUrl "http://host/path"
+    applicationUrl "https://dimkup.github.io/MMAContestManager/current/"
     applicationMainClass "com.mma.contestmanager.app.CMApp"
     deployTarget "docs/current"
 }
