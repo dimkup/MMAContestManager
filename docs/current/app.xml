@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Application ts="1563220590046" uri="http://host/path/" launch="com.mma.contestmanager.app.CMApp">
+<Application ts="1563225724473" uri="https://dimkup.github.io/MMAContestManager/current/" launch="com.mma.contestmanager.app.CMApp">
     <lib file="annotations.jar" checksum="4201984052" size="17536"/>
     <lib file="javax.json-api.jar" checksum="4026910835" size="31140"/>
     <lib file="javax.json.jar" checksum="1161332358" size="101089"/>
@@ -8,7 +8,7 @@
     <lib file="kotlin-stdlib-jdk7.jar" checksum="2903038514" size="3132"/>
     <lib file="kotlin-stdlib-jdk8.jar" checksum="3776301841" size="13831"/>
     <lib file="kotlin-stdlib.jar" checksum="2781709797" size="1281907"/>
-    <lib file="MMAContestManager.jar" checksum="4239439504" size="7212290"/>
+    <lib file="MMAContestManager-0.0.1.jar" checksum="853783966" size="7212290"/>
     <lib file="tornadofx.jar" checksum="3555970929" size="2812326"/>
     <updateText>Updating...</updateText>
     <updateLabelStyle>-fx-font-weight: bold;</updateLabelStyle>
