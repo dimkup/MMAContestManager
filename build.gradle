@@ -24,7 +24,7 @@ fxlauncher {
     applicationVendor "Dmitrii Potoskuev"
     applicationUrl "http://host/path"
     applicationMainClass "com.mma.contestmanager.app.CMApp"
-    deployTarget "username@hostname:path"
+    deployTarget "docs/current"
 }
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
