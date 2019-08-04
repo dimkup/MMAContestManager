@@ -13,7 +13,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.junit.platform:junit-platform-gradle-plugin:1.1.0"
-        classpath "no.tornado:fxlauncher-gradle-plugin:1.0.18"
+        classpath "no.tornado:fxlauncher-gradle-plugin:1.0.21.1"
     }
 }
 
@@ -28,6 +28,8 @@ fxlauncher {
     applicationUrl "https://dimkup.github.io/MMAContestManager/current/"
     applicationMainClass "com.mma.contestmanager.app.CMApp"
     deployTarget "docs/current"
+    //javapackagerOptions = [String.format("-Bruntime=%s",System.properties.'java.home'),"-Bwin.64Bit=x86"]
+    javapackagerOptions = [String.format("-Bruntime=%s",System.properties.'java.home')]
 }
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
